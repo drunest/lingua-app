@@ -188,7 +188,7 @@ const TranslationControls: React.FC<TranslationControlsProps> = ({onSendMessage}
     };
 
     return (
-        <Box display="flex" flexDirection="column" gap={2} paddingTop={2} width="100%">
+        <Box display="flex" flexDirection="column" gap={2} paddingTop={2} width="100%" height="25vh">
             {/* Text Input and Send Button */}
             <Box
                 display="flex"

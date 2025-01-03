@@ -19,7 +19,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({messages}) => {
                 border: "1px solid gray",
                 borderRadius: "8px",
                 padding: "20px",
-                height: "56vh",
+                height: "65vh",
                 overflowY: "auto",
                 backgroundColor: "#202020",
                 color: "white"
