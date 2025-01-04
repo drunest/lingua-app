@@ -5,6 +5,8 @@ import CustomAppBar from "./components/AppBar";
 import ChatPanel from "./components/ChatPanel";
 import TranslationControls from "./components/TranslationControls";
 import {Message} from "./types/Message";
+import axios from "axios";
+
 
 const App: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
@@ -37,25 +39,22 @@ const App: React.FC = () => {
         try {
             let task_string = inputType === "Text" ? "text" : "speech";
             task_string += outputType === "Text" ? "2text" : "2speech";
-            console.log(process.env);
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/translation`, {
-                method: "POST",
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/translation`, {
+                task_string: task_string,
+                target_language: outputLanguage,
+                source_language: inputLanguage,
+                input: content
+            }, {
                 headers: {
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    task_string: task_string,
-                    target_language: outputLanguage,
-                    source_language: inputLanguage,
-                    input: content
-                })
+                }
             });
 
-            if (!response.ok) {
+            if (response.status !== 200) {
                 throw new Error("Network response was not ok");
             }
 
-            const data = await response.json();
+            const data = await response.data;
             const assistantMessage: Message = {
                 id: uuidv4(),
                 sender: "Assistant",

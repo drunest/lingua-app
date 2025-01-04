@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {AppBar, Toolbar, Typography, Button, Menu, MenuItem} from "@mui/material";
+import {AppBar, Toolbar, Typography, Button, Menu, MenuItem, Link} from "@mui/material";
 import TranslateIcon from "@mui/icons-material/Translate";
 
 const CustomAppBar: React.FC = () => {
@@ -24,8 +24,8 @@ const CustomAppBar: React.FC = () => {
                     Contact
                 </Button>
                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-                    <MenuItem onClick={handleClose}>Discord: your-discord-id</MenuItem>
-                    <MenuItem onClick={handleClose}>Email: stefan@analyzify360.com</MenuItem>
+                    <MenuItem onClick={handleClose}><Link href="https://discord.com/channels/941362322000203776/1322245172658180147">Discord</Link></MenuItem>
+                    <MenuItem onClick={handleClose}>Email: <Link>support@analyzify360.com</Link></MenuItem>
                 </Menu>
             </Toolbar>
         </AppBar>
